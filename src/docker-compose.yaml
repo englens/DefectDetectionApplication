@@ -2,7 +2,10 @@ version: "3.0"
 services:
   backend_tegra_gpu_enabled:
     network_mode: "host"
-    build: ./backend
+    build:
+      context: ./backend
+      args:
+        OS: ${OS}
     image: flask-app
     privileged: true
     expose:
@@ -47,7 +50,10 @@ services:
     profiles: [tegra]
   backend_generic:
     network_mode: "host"
-    build: ./backend
+    build:
+      context: ./backend
+      args:
+        OS: ${OS}
     image: flask-app
     privileged: true
     expose:
@@ -83,7 +89,11 @@ services:
       - PYTHONPATH=/opt/tritonserver/backends/python:/
     profiles: [generic]
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      args:
+        REACT_APP_SERVER_V: "http://localhost:5000"
+        REACT_APP_SERVER_V_SSL: "https://localhost:5443"
     image: react-webapp
     ports:
       - "3000:80"
