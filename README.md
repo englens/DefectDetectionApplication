@@ -219,6 +219,18 @@ DDA consists of several key components:
 - AWS IAM (for permissions)
 - Amazon SageMaker for Model Training and Compiling
 
+### AWS Credentials for Notebooks
+
+If you plan to use the Jupyter notebooks for model training (`DDA_SageMaker_Model_Training_and_Compilation.ipynb`) or Greengrass component creation (`DDA_Greengrass_Component_Creator.ipynb`), you need to configure AWS credentials.
+
+**See [AWS_CREDENTIALS_SETUP.md](AWS_CREDENTIALS_SETUP.md) for detailed setup instructions.**
+
+Common credential configuration methods:
+- Run notebooks in Amazon SageMaker Notebook Instance or Studio (recommended)
+- Configure AWS CLI: `aws configure`
+- Set environment variables: `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`
+- Use IAM role on EC2 instances
+
 ## Quick Start
 
 
